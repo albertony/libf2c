@@ -1,0 +1,370 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{05DFFB20-1FF0-4CA8-B9C1-397501BF148E}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>libf2c</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>obj\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>obj\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>obj\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>obj\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;USE_CLOCK;MSDOS;NO_ONEXIT;NO_My_ctype;NO_ISATTY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <PreBuildEvent />
+    <PreBuildEvent>
+      <Message>Performing Pre-Build Step: Building arithchk.exe and generating arith.h...</Message>
+      <Command>SET INCLUDE=$(IncludePath)
+SET LIB=$(LibraryPath)
+MKDIR "$(IntermediateOutputPath)" &gt;NUL 2&gt;&amp;1
+cl.exe /DWIN32 /D_DEBUG /D_CONSOLE /DNO_SSIZE_T /DNO_FPINIT /Fo"$(IntermediateOutputPath)\" src\arithchk.c /nologo /link /OUT:"$(IntermediateOutputPath)arithchk.exe" /NOLOGO
+"$(IntermediateOutputPath)arithchk.exe" &gt;src\arith.h
+del "$(IntermediateOutputPath)arithchk.exe"
+del "$(IntermediateOutputPath)arithchk.obj"</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;USE_CLOCK;MSDOS;NO_ONEXIT;NO_My_ctype;NO_ISATTY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <PreBuildEvent />
+    <PreBuildEvent>
+      <Message>Performing Pre-Build Step: Building arithchk.exe and generating arith.h...</Message>
+      <Command>SET INCLUDE=$(IncludePath)
+SET LIB=$(LibraryPath)
+MKDIR "$(IntermediateOutputPath)" &gt;NUL 2&gt;&amp;1
+cl.exe /D_DEBUG /D_CONSOLE /DNO_SSIZE_T /DNO_FPINIT /Fo"$(IntermediateOutputPath)\" src\arithchk.c /nologo /link /OUT:"$(IntermediateOutputPath)arithchk.exe" /NOLOGO
+"$(IntermediateOutputPath)arithchk.exe" &gt;src\arith.h
+del "$(IntermediateOutputPath)arithchk.exe"
+del "$(IntermediateOutputPath)arithchk.obj"</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;USE_CLOCK;MSDOS;NO_ONEXIT;NO_My_ctype;NO_ISATTY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <PreBuildEvent />
+    <PreBuildEvent>
+      <Message>Performing Pre-Build Step: Building arithchk.exe and generating arith.h...</Message>
+      <Command>SET INCLUDE=$(IncludePath)
+SET LIB=$(LibraryPath)
+MKDIR "$(IntermediateOutputPath)" &gt;NUL 2&gt;&amp;1
+cl.exe /DWIN32 /DNDEBUG /D_CONSOLE /DNO_SSIZE_T /DNO_FPINIT /Fo"$(IntermediateOutputPath)\" src\arithchk.c /nologo /link /OUT:"$(IntermediateOutputPath)arithchk.exe" /NOLOGO
+"$(IntermediateOutputPath)arithchk.exe" &gt;src\arith.h
+del "$(IntermediateOutputPath)arithchk.exe"
+del "$(IntermediateOutputPath)arithchk.obj"</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;USE_CLOCK;MSDOS;NO_ONEXIT;NO_My_ctype;NO_ISATTY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <PreBuildEvent />
+    <PreBuildEvent>
+      <Message>Performing Pre-Build Step: Building arithchk.exe and generating arith.h...</Message>
+      <Command>SET INCLUDE=$(IncludePath)
+SET LIB=$(LibraryPath)
+MKDIR "$(IntermediateOutputPath)" &gt;NUL 2&gt;&amp;1
+cl.exe /DNDEBUG /D_CONSOLE /DNO_SSIZE_T /DNO_FPINIT /Fo"$(IntermediateOutputPath)\" src\arithchk.c /nologo /link /OUT:"$(IntermediateOutputPath)arithchk.exe" /NOLOGO
+"$(IntermediateOutputPath)arithchk.exe" &gt;src\arith.h
+del "$(IntermediateOutputPath)arithchk.exe"
+del "$(IntermediateOutputPath)arithchk.obj"</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\abort_.c" />
+    <ClCompile Include="src\arithchk.c">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\backspac.c" />
+    <ClCompile Include="src\cabs.c" />
+    <ClCompile Include="src\close.c" />
+    <ClCompile Include="src\c_abs.c" />
+    <ClCompile Include="src\c_cos.c" />
+    <ClCompile Include="src\c_div.c" />
+    <ClCompile Include="src\c_exp.c" />
+    <ClCompile Include="src\c_log.c" />
+    <ClCompile Include="src\c_sin.c" />
+    <ClCompile Include="src\c_sqrt.c" />
+    <ClCompile Include="src\derfc_.c" />
+    <ClCompile Include="src\derf_.c" />
+    <ClCompile Include="src\dfe.c" />
+    <ClCompile Include="src\dolio.c" />
+    <ClCompile Include="src\dtime_.c" />
+    <ClCompile Include="src\due.c" />
+    <ClCompile Include="src\d_abs.c" />
+    <ClCompile Include="src\d_acos.c" />
+    <ClCompile Include="src\d_asin.c" />
+    <ClCompile Include="src\d_atan.c" />
+    <ClCompile Include="src\d_atn2.c" />
+    <ClCompile Include="src\d_cnjg.c" />
+    <ClCompile Include="src\d_cos.c" />
+    <ClCompile Include="src\d_cosh.c" />
+    <ClCompile Include="src\d_dim.c" />
+    <ClCompile Include="src\d_exp.c" />
+    <ClCompile Include="src\d_imag.c" />
+    <ClCompile Include="src\d_int.c" />
+    <ClCompile Include="src\d_lg10.c" />
+    <ClCompile Include="src\d_log.c" />
+    <ClCompile Include="src\d_mod.c" />
+    <ClCompile Include="src\d_nint.c" />
+    <ClCompile Include="src\d_prod.c" />
+    <ClCompile Include="src\d_sign.c" />
+    <ClCompile Include="src\d_sin.c" />
+    <ClCompile Include="src\d_sinh.c" />
+    <ClCompile Include="src\d_sqrt.c" />
+    <ClCompile Include="src\d_tan.c" />
+    <ClCompile Include="src\d_tanh.c" />
+    <ClCompile Include="src\ef1asc_.c" />
+    <ClCompile Include="src\ef1cmc_.c" />
+    <ClCompile Include="src\endfile.c" />
+    <ClCompile Include="src\erfc_.c" />
+    <ClCompile Include="src\erf_.c" />
+    <ClCompile Include="src\err.c" />
+    <ClCompile Include="src\etime_.c" />
+    <ClCompile Include="src\exit_.c" />
+    <ClCompile Include="src\f77vers.c" />
+    <ClCompile Include="src\f77_aloc.c" />
+    <ClCompile Include="src\fmt.c" />
+    <ClCompile Include="src\fmtlib.c" />
+    <ClCompile Include="src\ftell_.c" />
+    <ClCompile Include="src\getarg_.c" />
+    <ClCompile Include="src\getenv_.c" />
+    <ClCompile Include="src\hl_ge.c" />
+    <ClCompile Include="src\hl_gt.c" />
+    <ClCompile Include="src\hl_le.c" />
+    <ClCompile Include="src\hl_lt.c" />
+    <ClCompile Include="src\h_abs.c" />
+    <ClCompile Include="src\h_dim.c" />
+    <ClCompile Include="src\h_dnnt.c" />
+    <ClCompile Include="src\h_indx.c" />
+    <ClCompile Include="src\h_len.c" />
+    <ClCompile Include="src\h_mod.c" />
+    <ClCompile Include="src\h_nint.c" />
+    <ClCompile Include="src\h_sign.c" />
+    <ClCompile Include="src\i77vers.c" />
+    <ClCompile Include="src\iargc_.c" />
+    <ClCompile Include="src\iio.c" />
+    <ClCompile Include="src\ilnw.c" />
+    <ClCompile Include="src\inquire.c" />
+    <ClCompile Include="src\i_abs.c" />
+    <ClCompile Include="src\i_dim.c" />
+    <ClCompile Include="src\i_dnnt.c" />
+    <ClCompile Include="src\i_indx.c" />
+    <ClCompile Include="src\i_len.c" />
+    <ClCompile Include="src\i_mod.c" />
+    <ClCompile Include="src\i_nint.c" />
+    <ClCompile Include="src\i_sign.c" />
+    <ClCompile Include="src\lbitbits.c" />
+    <ClCompile Include="src\lbitshft.c" />
+    <ClCompile Include="src\lread.c" />
+    <ClCompile Include="src\lwrite.c" />
+    <ClCompile Include="src\l_ge.c" />
+    <ClCompile Include="src\l_gt.c" />
+    <ClCompile Include="src\l_le.c" />
+    <ClCompile Include="src\l_lt.c" />
+    <ClCompile Include="src\main.c" />
+    <ClCompile Include="src\open.c" />
+    <ClCompile Include="src\pow_ci.c" />
+    <ClCompile Include="src\pow_dd.c" />
+    <ClCompile Include="src\pow_di.c" />
+    <ClCompile Include="src\pow_hh.c" />
+    <ClCompile Include="src\pow_ii.c" />
+    <ClCompile Include="src\pow_ri.c" />
+    <ClCompile Include="src\pow_zi.c" />
+    <ClCompile Include="src\pow_zz.c" />
+    <ClCompile Include="src\rdfmt.c" />
+    <ClCompile Include="src\rewind.c" />
+    <ClCompile Include="src\rsfe.c" />
+    <ClCompile Include="src\rsli.c" />
+    <ClCompile Include="src\rsne.c" />
+    <ClCompile Include="src\r_abs.c" />
+    <ClCompile Include="src\r_acos.c" />
+    <ClCompile Include="src\r_asin.c" />
+    <ClCompile Include="src\r_atan.c" />
+    <ClCompile Include="src\r_atn2.c" />
+    <ClCompile Include="src\r_cnjg.c" />
+    <ClCompile Include="src\r_cos.c" />
+    <ClCompile Include="src\r_cosh.c" />
+    <ClCompile Include="src\r_dim.c" />
+    <ClCompile Include="src\r_exp.c" />
+    <ClCompile Include="src\r_imag.c" />
+    <ClCompile Include="src\r_int.c" />
+    <ClCompile Include="src\r_lg10.c" />
+    <ClCompile Include="src\r_log.c" />
+    <ClCompile Include="src\r_mod.c" />
+    <ClCompile Include="src\r_nint.c" />
+    <ClCompile Include="src\r_sign.c" />
+    <ClCompile Include="src\r_sin.c" />
+    <ClCompile Include="src\r_sinh.c" />
+    <ClCompile Include="src\r_sqrt.c" />
+    <ClCompile Include="src\r_tan.c" />
+    <ClCompile Include="src\r_tanh.c" />
+    <ClCompile Include="src\sfe.c" />
+    <ClCompile Include="src\signal_.c" />
+    <ClCompile Include="src\sig_die.c" />
+    <ClCompile Include="src\sue.c" />
+    <ClCompile Include="src\system_.c" />
+    <ClCompile Include="src\s_cat.c" />
+    <ClCompile Include="src\s_cmp.c" />
+    <ClCompile Include="src\s_copy.c" />
+    <ClCompile Include="src\s_paus.c" />
+    <ClCompile Include="src\s_rnge.c" />
+    <ClCompile Include="src\s_stop.c" />
+    <ClCompile Include="src\typesize.c" />
+    <ClCompile Include="src\uio.c" />
+    <ClCompile Include="src\uninit.c" />
+    <ClCompile Include="src\util.c" />
+    <ClCompile Include="src\wref.c" />
+    <ClCompile Include="src\wrtfmt.c" />
+    <ClCompile Include="src\wsfe.c" />
+    <ClCompile Include="src\wsle.c" />
+    <ClCompile Include="src\wsne.c" />
+    <ClCompile Include="src\xwsne.c" />
+    <ClCompile Include="src\z_abs.c" />
+    <ClCompile Include="src\z_cos.c" />
+    <ClCompile Include="src\z_div.c" />
+    <ClCompile Include="src\z_exp.c" />
+    <ClCompile Include="src\z_log.c" />
+    <ClCompile Include="src\z_sin.c" />
+    <ClCompile Include="src\z_sqrt.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\arith.h" />
+    <ClInclude Include="src\ctype.h" />
+    <ClInclude Include="src\f2c.h" />
+    <ClInclude Include="src\fio.h" />
+    <ClInclude Include="src\fmt.h" />
+    <ClInclude Include="src\fp.h" />
+    <ClInclude Include="src\lio.h" />
+    <ClInclude Include="src\math.h" />
+    <ClInclude Include="src\signal1.h" />
+    <ClInclude Include="src\sysdep1.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="LICENSE.md" />
+    <None Include="README.md" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
