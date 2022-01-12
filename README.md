@@ -26,11 +26,12 @@ code is the original libf2c source code available at netlib.org.
 ## Changelog
 
 See <http://www.netlib.org/f2c/changes> for history of changes in the netlib f2c source,
-and run `f2c.exe --version` on an existing build to see which version it was built from.
+and if you have the translator program run `f2c.exe --version` to see which version it
+was built from.
 
 12 Jan 2022
 - Updated to latest version of netlib f2c source, version 20210928
-  (but no relevant changes).
+  (but it did not include any relevant changes for libf2c).
 - Released as version 1.1, with release builds of libf2c.lib in 32-bit
 and 64-bit using Visual Studio 2022 / Visual C++ 14.3.
 
