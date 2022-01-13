@@ -30,8 +30,13 @@ and if you have the translator program run `f2c.exe --version` to see which vers
 was built from.
 
 12 Jan 2022
-- Updated to latest version of netlib f2c source, version 20210928
-  (but it did not include any relevant changes for libf2c).
+- Updated to latest version of netlib f2c source, version 20200916.
+   - The newer 20210928 entry in [changes](http://www.netlib.org/f2c/changes)
+     is an update to readme only, i.e. does not change the version number
+     of the f2c program.
+   - No relevant changes in the libf2c source since my last version (see below),
+     there is only a single changed script file (comptry.bat) which not used
+     with my build configuration.
 - Released as version 1.1, with release builds of libf2c.lib in 32-bit
 and 64-bit using Visual Studio 2022 / Visual C++ 14.3.
 
