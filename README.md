@@ -29,6 +29,12 @@ See <http://www.netlib.org/f2c/changes> for history of changes in the netlib f2c
 and if you have the translator program run `f2c.exe --version` to see which version it
 was built from.
 
+10 Apr 2024
+- Updated to latest version of netlib f2c source, version 20240312.
+- Released as version 1.2, with release builds of f2c.exe in 32-bit
+and 64-bit using Visual Studio 2022 (17.9.6) / Visual C++ 14.3 and
+Windows SDK 10.0.22621.0.
+
 12 Jan 2022
 - Updated to latest version of netlib f2c source, version 20200916.
    - The newer 20210928 entry in [changes](http://www.netlib.org/f2c/changes)
@@ -45,7 +51,7 @@ and 64-bit using Visual Studio 2022 / Visual C++ 14.3.
 - Released as version 1.0, with release builds of libf2c.lib in 32-bit
 and 64-bit using Visual Studio 2015 Update 3 / Visual C++ 14.0.
 
-# How to use
+# Building
 
 The repository includes the original unmodified source code of the libf2c utility
 as provided by netlib.org, so all you have to do is use Visual Studio to
@@ -55,17 +61,22 @@ with your Fortran-to-C converted application. You could typically add the libf2c
 project to the solution where you have your Fortran-to-C converted projects,
 and specify a project reference from those projects to libf2c.
 
+The project file is for the older Visual Studio 2015, but you can open it with newest
+Visual Studio 2022, and also upgrade it to use the newest versions of Platform Toolset
+and Windows SDK.
+
 If you want to use your own copy of the libf2c source code you just have to
 get the project file from this repository, and then download the latest version
 of libf2c.zip from <http://www.netlib.org/f2c/>
 (direct link: <http://www.netlib.org/f2c/libf2c.zip>).
 Extract the contents to a subdirectory with name "src". The final step is to
 rename four files: Change the file extension of all .h0 and .hvc files to .h.
-This includes the files: sysdep1.h0, signal1.h0, math.hvc and f2c.h0. You can
+This includes the files: sysdep1.h0, signal1.h0, math.hvc and f2c.h0. In version 20240313
+there is also a file fio.h0, however ann identical fio.h is also included. You can
 use the following PowerShell snippet to rename all at once:
 
 ```powershell
-Get-ChildItem *.h0, *.hvc | ForEach-Object { Rename-Item $_ -NewName "$($_.BaseName).h" }
+Get-ChildItem *.h0, *.hvc | ForEach-Object { Rename-Item $_ -NewName "$($_.BaseName).h" -ErrorAction Ignore }
 ```
 
 # How the Visual Studio project was created

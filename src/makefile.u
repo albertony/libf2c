@@ -86,15 +86,15 @@ libf2c.a: $(OFILES)
 ## arrange for $DYLD_LIBRARY_PATH to include the directory containing libf2c.so.
 
 libf2c.so: $(OFILES)
-	$(CC) -shared -o libf2c.so $(OFILES)
+	$(CC) $(LDFLAGS) -shared -o libf2c.so $(OFILES)
 
 ### If your system lacks ranlib, you don't need it; see README.
 
 f77vers.o: f77vers.c
-	$(CC) -c f77vers.c
+	$(CC) -c $(CFLAGS) f77vers.c
 
 i77vers.o: i77vers.c
-	$(CC) -c i77vers.c
+	$(CC) -c $(CFLAGS) i77vers.c
 
 # To get an "f2c.h" for use with "f2c -C++", first "make hadd"
 hadd: f2c.h0 f2ch.add
@@ -110,6 +110,9 @@ signal1.h: signal1.h0
 
 sysdep1.h: sysdep1.h0
 	cp sysdep1.h0 sysdep1.h
+
+fio.h: fio.h0 sysdep1.h
+	cp fio.h0 fio.h
 
 # If your system lacks onexit() and you are not using an
 # ANSI C compiler, then you should uncomment the following
@@ -197,7 +200,7 @@ check:
 	d_nint.c d_prod.c d_sign.c d_sin.c d_sinh.c d_sqrt.c d_tan.c \
 	d_tanh.c derf_.c derfc_.c dfe.c dolio.c dtime_.c due.c ef1asc_.c \
 	ef1cmc_.c endfile.c erf_.c erfc_.c err.c etime_.c exit_.c f2c.h0 \
-	f2ch.add f77_aloc.c f77vers.c fio.h fmt.c fmt.h fmtlib.c \
+	f2ch.add f77_aloc.c f77vers.c fio.h0 fmt.c fmt.h fmtlib.c \
 	fp.h ftell_.c ftell64_.c \
 	getarg_.c getenv_.c h_abs.c h_dim.c h_dnnt.c h_indx.c h_len.c \
 	h_mod.c h_nint.c h_sign.c hl_ge.c hl_gt.c hl_le.c hl_lt.c \

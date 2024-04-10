@@ -1,7 +1,7 @@
 Notice	76f23b4	1212
 README	19870416	16866
 abort_.c	f51c808	304
-arithchk.c	91ee1e0	5988
+arithchk.c	63b0185	6532
 backspac.c	10ebf554	1328
 c_abs.c	fec22c59	272
 c_cos.c	18fc0ea3	354
@@ -12,7 +12,7 @@ c_sin.c	1ccaedc8	350
 c_sqrt.c	f1ee88d5	605
 cabs.c	f3d3b5f2	494
 close.c	173f01de	1393
-comptry.bat	f8a8a0d5	125
+comptry.bat	e40861e9	209
 ctype.c	f553a125	40
 ctype.h	1e54977d	1139
 d_abs.c	e58094ef	218
@@ -56,7 +56,7 @@ f2c.h0	e770b7d8	4688
 f2ch.add	ef66bf17	6060
 f77_aloc.c	f8daf96e	684
 f77vers.c	ed1c96fa	4933
-fio.h	e41d245e	2939
+fio.h0	e41d245e	2939
 fmt.c	f9a1bb94	8566
 fmt.h	ec84ce17	2006
 fmtlib.c	eefc6a27	865
@@ -103,7 +103,7 @@ lread.c	f1e54a1f	14739
 lwrite.c	f80da63f	4616
 main.c	371f60f	2230
 makefile.sy	174ccb83	2990
-makefile.u	ed8e28fa	7379
+makefile.u	16c94802	7453
 makefile.vc	18a3c2ce	2954
 makefile.wat	18b044ac	2936
 math.hvc	19bb2d07	50
